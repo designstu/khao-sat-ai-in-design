@@ -675,9 +675,6 @@
 </head>
 <body class="mode-desktop">
 
-<!-- ══════════════════════════════════════════════════════
-     DEVICE SWITCHER
-════════════════════════════════════════════════════════ -->
 <div class="device-switcher" id="deviceSwitcher">
   <button class="device-btn active" data-mode="mode-desktop" onclick="switchMode('mode-desktop', this)">
     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -702,18 +699,13 @@
   </button>
 </div>
 
-<!-- SUBMIT OVERLAY -->
 <div class="submit-overlay" id="submitOverlay">
   <div class="spinner"></div>
   <div class="submit-msg">Đang gửi phản hồi...</div>
 </div>
 
-<!-- ERROR TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ══════════════════════════════════════════════════════
-     LANDING PAGE
-════════════════════════════════════════════════════════ -->
 <div class="hero" id="landingPage">
   <div class="hero-mesh"><div class="hero-mesh-teal"></div></div>
   <div class="hero-grid"></div>
@@ -760,9 +752,6 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════
-     SURVEY PAGE
-════════════════════════════════════════════════════════ -->
 <div class="survey-wrap" id="surveyPage">
   <div class="survey-header">
     <div class="survey-logo">Design<span>Hub</span></div>
@@ -774,7 +763,6 @@
 
   <div class="steps">
 
-    <!-- INTRO -->
     <div class="intro-step" id="step-intro">
       <div class="intro-inner">
       <div class="intro-tag"><div class="dot"></div> Đang thu thập phản hồi</div>
@@ -789,7 +777,6 @@
       </div>
     </div>
 
-    <!-- INFO: Thông tin cá nhân -->
     <div class="step" id="step-info">
      <div class="step-inner">
       <div class="step-number">Thông tin · Trước khi bắt đầu</div>
@@ -826,7 +813,6 @@
      </div>
     </div>
 
-    <!-- Q1: Tools used -->
     <div class="step" id="step-0">
      <div class="step-inner">
       <div class="step-number">Phần 1 · Câu 1 / 7</div>
@@ -857,7 +843,6 @@
      </div>
     </div>
 
-    <!-- Q2: Frequency -->
     <div class="step" id="step-1">
      <div class="step-inner">
       <div class="step-number">Phần 1 · Câu 2 / 7</div>
@@ -891,7 +876,6 @@
      </div>
     </div>
 
-    <!-- Q3: Barriers -->
     <div class="step" id="step-2">
      <div class="step-inner">
       <div class="step-number">Phần 1 · Câu 3 / 7</div>
@@ -926,7 +910,6 @@
      </div>
     </div>
 
-    <!-- Q4: Time task Buổi 1 -->
     <div class="step" id="step-3">
      <div class="step-inner">
       <div class="step-number">Phần 2 · Câu 4 / 7</div>
@@ -957,7 +940,6 @@
      </div>
     </div>
 
-    <!-- Q5: Môn học Buổi 2 -->
     <div class="step" id="step-4">
      <div class="step-inner">
       <div class="step-number">Phần 2 · Câu 5 / 7</div>
@@ -972,7 +954,6 @@
      </div>
     </div>
 
-    <!-- Q6: Design Hub Buổi 3 -->
     <div class="step" id="step-5">
      <div class="step-inner">
       <div class="step-number">Phần 2 · Câu 6 / 7</div>
@@ -1003,7 +984,6 @@
     </div>
     </div>
 
-    <!-- Q7: Open feedback -->
     <div class="step" id="step-6">
      <div class="step-inner">
       <div class="step-number">Câu cuối · Câu 7 / 7</div>
@@ -1019,12 +999,8 @@
      </div>
     </div>
 
-  </div><!-- end steps -->
-</div>
+  </div></div>
 
-<!-- ══════════════════════════════════════════════════════
-     DONE PAGE
-════════════════════════════════════════════════════════ -->
 <div class="done-screen" id="donePage">
   <div class="done-icon">✓</div>
   <h2>Cảm ơn Thầy/Cô!</h2>
@@ -1035,9 +1011,6 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════
-     DASHBOARD
-════════════════════════════════════════════════════════ -->
 <div class="dashboard" id="dashPage">
   <div class="dash-header">
     <div style="position:relative;z-index:1;">
@@ -1054,12 +1027,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════════════════════ -->
 <script>
 // ╔══════════════════════════════════════════════════════════════╗
-// ║  BƯỚC DUY NHẤT BẠN CẦN CHỈNH: dán URL Apps Script vào đây ║
+// ║  BƯỚC DUY NHẤT BẠN CẦN CHỈNH: dán URL Apps Script vào đây     ║
 // ╚══════════════════════════════════════════════════════════════╝
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx92Qo9EEHj5DnpXc1ZHeMatAE8UNHvOW53IRbicud-mvIf3hxjvprwZbO22jyzAGINfA/exec';
 
@@ -1199,9 +1169,12 @@ async function submitSurvey() {
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   document.getElementById('submitOverlay').classList.add('show');
+  
   const payload = {
     timestamp: new Date().toLocaleString('vi-VN'),
-    name: answers.name, email: answers.email, major: answers.major,
+    fullName: answers.name,   // ĐÃ CẬP NHẬT: 'fullName' để khớp với Google Apps Script
+    email: answers.email, 
+    major: answers.major,
     q1_tools:     Array.isArray(answers.q0) ? answers.q0.join('; ') : answers.q0,
     q2_frequency: answers.q1,
     q3_barriers:  Array.isArray(answers.q2) ? answers.q2.join('; ') : answers.q2,
@@ -1210,6 +1183,7 @@ async function submitSurvey() {
     q6_hub:       Array.isArray(answers.q5) ? answers.q5.join('; ') : answers.q5,
     q7_notes:     answers.q6,
   };
+  
   try {
     await fetch(APPS_SCRIPT_URL, {
       method: 'POST', mode: 'no-cors',
