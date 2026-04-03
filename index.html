@@ -795,14 +795,14 @@
           <label class="info-label" for="info-major">Chuyên ngành giảng dạy <span style="color:var(--accent2)">*</span></label>
           <select class="info-select" id="info-major">
             <option value="" disabled selected>— Chọn chuyên ngành —</option>
-            <option value="Thiết kế Đồ họa">Thiết kế Đồ họa</option>
-            <option value="Thiết kế Thời trang">Thiết kế Thời trang</option>
+            <option value="Thiết kế Đồ Họa">Thiết kế Đồ Họa</option>
             <option value="Thiết kế Nội thất">Thiết kế Nội thất</option>
-            <option value="Thiết kế Công nghiệp">Thiết kế Công nghiệp</option>
-            <option value="Nhiếp ảnh">Nhiếp ảnh</option>
-            <option value="Mỹ thuật Ứng dụng">Mỹ thuật Ứng dụng</option>
-            <option value="Kiến trúc">Kiến trúc</option>
-            <option value="Khác">Khác</option>
+            <option value="Thiết kế Thời trang">Thiết kế Thời trang</option>
+            <option value="Thiết kế Sản phẩm">Thiết kế Sản phẩm</option>
+            <option value="Nhóm môn Hình họa">Nhóm môn Hình họa</option>
+            <option value="Nhóm môn Cơ sở ngành">Nhóm môn Cơ sở ngành</option>
+            <option value="Văn phòng khoa">Văn phòng khoa</option>
+            <option value="Khác...">Khác...</option>
           </select>
         </div>
       </div>
@@ -1172,7 +1172,7 @@ async function submitSurvey() {
   
   const payload = {
     timestamp: new Date().toLocaleString('vi-VN'),
-    fullName: answers.name,   // ĐÃ CẬP NHẬT: 'fullName' để khớp với Google Apps Script
+    fullName: answers.name,
     email: answers.email, 
     major: answers.major,
     q1_tools:     Array.isArray(answers.q0) ? answers.q0.join('; ') : answers.q0,
